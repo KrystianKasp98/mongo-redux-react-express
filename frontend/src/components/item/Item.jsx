@@ -11,7 +11,7 @@ const images = {
   tshirtImage,
 };
 
-function Item({ type, model, color, price, count,_id }) {
+function Item({ type, model, color, price, count,_id}) {
   const [selected, setSelected] = useState(0);
   const dispatch = useDispatch();
   const handleAdd = (e) => {
