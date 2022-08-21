@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       {isCartOpen ? (
-        <div data-testId={TEST_ID.CART}>Cart</div>
+        <div data-testid={TEST_ID.CART}>Cart</div>
       ) : (
         <button data-testid={TEST_ID.BTN_CART_ON} onClick={toogleCart}>
           open
@@ -34,7 +34,7 @@ function App() {
       </h1>
       <div data-testid={TEST_ID.ITEMS_WRAPPER} className="items-wrapper">
         {items.map((item, index) => (
-          <Item key={item._id} {...item} />
+          <Item key={item._id} {...item} index={index} testId={`${TEST_ID.ITEM}${index}`} />
         ))}
       </div>
     </div>
