@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const roundTotalCost = (value) => Math.round(value * 100) / 100;
+import { roundTotalCost } from "../utils";
 
 const initialState = {
   items: [],

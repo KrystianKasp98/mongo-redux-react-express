@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useSound from "use-sound";
 
@@ -6,23 +5,16 @@ import { add, sub } from "../../reducers/cartSlice";
 
 import clickAdd from "../../assets/click-add.wav";
 import clickSub from "../../assets/click-sub.wav";
-import trousersImage from "../../assets/trousers.png";
-import tshirtImage from "../../assets/t-shirt.png";
-import capImage from "../../assets/cap.png";
 import "./Item.css";
 import { TEST_ID } from "../../test/consts";
+import { images } from "../../utils/index";
 
-const images = {
-  capImage,
-  trousersImage,
-  tshirtImage,
-};
 
 function Item({ type, model, color, price, count, _id, testId, index }) {
   const [playClickAdd] = useSound(clickAdd);
   const [playClickSub] = useSound(clickSub);
   const dispatch = useDispatch();
-  const cartItem = useSelector(state => state.cart.items[index]);
+  const cartItem = useSelector(state => state.cart.items.filter(item=>item._id===_id)[0]);
 
   const handle = (e, action = "add") => {
     e.preventDefault();

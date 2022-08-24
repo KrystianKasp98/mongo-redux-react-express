@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../reducers/itemSlice";
 
 import Item from "../components/item/Item";
+import Cart from "../components/cart/Cart";
 import { TEST_ID } from "../test/consts";
 
 import "./App.css";
@@ -11,7 +12,6 @@ function App() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.items.items);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const toogleCart = () => setIsCartOpen(!isCartOpen);
 
   useEffect(() => {
     const getItems = async () => {
@@ -20,12 +20,15 @@ function App() {
     getItems();
   }, []);
 
+  const closeCart = () => setIsCartOpen(false);
+  const openCart = () => setIsCartOpen(true);
+
   return (
     <div className="App">
       {isCartOpen ? (
-        <div data-testid={TEST_ID.CART}>Cart</div>
+        <Cart closeCart={closeCart} />
       ) : (
-        <button data-testid={TEST_ID.BTN_CART_ON} onClick={toogleCart}>
+        <button data-testid={TEST_ID.BTN_CART_ON} onClick={openCart}>
           open
         </button>
       )}
@@ -34,7 +37,12 @@ function App() {
       </h1>
       <div data-testid={TEST_ID.ITEMS_WRAPPER} className="items-wrapper">
         {items.map((item, index) => (
-          <Item key={item._id} {...item} index={index} testId={`${TEST_ID.ITEM}${index}`} />
+          <Item
+            key={item._id}
+            {...item}
+            index={index}
+            testId={`${TEST_ID.ITEM}${index}`}
+          />
         ))}
       </div>
     </div>
