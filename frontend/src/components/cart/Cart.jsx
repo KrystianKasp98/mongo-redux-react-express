@@ -1,42 +1,32 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { images, roundTotalCost } from "../../utils/index";
+import CartItem from "./CartItem";
 import { TEST_ID } from "../../test/consts";
+import { GrFormClose } from "react-icons/gr";
+import { clearAll } from "../../reducers/cartSlice";
 
 import "./Cart.css";
 
-
-
-
-
-function Cart({closeCart}) {
-  const cartItems = useSelector((state) => state.cart.items);
+function Cart({ closeCart }) {
+  const dispatch = useDispatch();
+  const Items = [...useSelector((state) => state.cart.items)];
+  const cartItems = Items.reverse();
   const cartTotalCost = useSelector((state) => state.cart.totalCost);
   console.log(cartItems);
 
   return (
     <div className="cart-wrapper" data-testid={TEST_ID.CART}>
-      <div className="cart-title"><div onClick={closeCart} className="cart-exit">x</div></div>
+      <div className="cart-title">
+        <div className="cart-remove-all" onClick={()=>dispatch(clearAll())}>
+          clear all
+        </div>
+        <div onClick={closeCart} className="cart-exit">
+          <GrFormClose />
+        </div>
+      </div>
       <div className="cart-items-wrapper">
         {cartItems.map((item) => (
-          <div key={item._id} className="cart-item-wrapper">
-            <img
-              className="cart-item-image"
-              src={
-                item.type === "t-shirt"
-                  ? images["tshirtImage"]
-                  : images[item.type + "Image"]
-              }
-              alt="cart-product"
-            />
-            <div>{item.model}</div>
-            <div>
-              {roundTotalCost(item.price * item.value)} ({item.value})
-            </div>
-            <div>
-              <button>x</button>
-            </div>
-          </div>
+          <CartItem key={item._id} {...item} />
         ))}
       </div>
       <div className="cart-total">Total: {cartTotalCost}</div>

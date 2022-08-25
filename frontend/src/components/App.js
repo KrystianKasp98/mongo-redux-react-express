@@ -4,6 +4,7 @@ import { fetchItems } from "../reducers/itemSlice";
 
 import Item from "../components/item/Item";
 import Cart from "../components/cart/Cart";
+import CartButton from "./cart/CartButton";
 import { TEST_ID } from "../test/consts";
 
 import "./App.css";
@@ -28,9 +29,7 @@ function App() {
       {isCartOpen ? (
         <Cart closeCart={closeCart} />
       ) : (
-        <button data-testid={TEST_ID.BTN_CART_ON} onClick={openCart}>
-          open
-        </button>
+        <CartButton openCart={openCart}/>
       )}
       <h1 data-testid={TEST_ID.HEADER} className="title">
         X-Shop

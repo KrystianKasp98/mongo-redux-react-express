@@ -2,10 +2,16 @@
   width: 400px;
   height: 188px;
   background-color: gray;
+  overflow-y: auto;
+}
+.open-cart-wrapper,
+.cart-wrapper {
   position: fixed;
   top: 0;
   right: 0;
-  overflow-y: auto;
+}
+.open-cart-wrapper button{
+  cursor: pointer;
 }
 .cart-title,
 .cart-total {
@@ -17,12 +23,25 @@
 }
 .cart-title {
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.cart-exit {
+.cart-title div{
+  margin: 0 10px;
+}
+.cart-exit, .cart-remove-all {
   cursor: pointer;
-  width: 20px;
-  margin-left: 355px;
+  box-sizing: border-box;
   background-color: rgb(245, 94, 94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+}
+.cart-remove-all{
+  font-size: 12px;
+  padding: 2px;
 }
 .cart-total {
   top: 160px;
