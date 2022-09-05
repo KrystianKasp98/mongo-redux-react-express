@@ -17,19 +17,30 @@ function Cart({ closeCart }) {
   return (
     <div className="cart-wrapper" data-testid={TEST_ID.CART}>
       <div className="cart-title">
-        <div className="cart-remove-all" onClick={()=>dispatch(clearAll())}>
+        <div
+          className="cart-remove-all"
+          data-testid={TEST_ID.CART_BUTTON_CLEAR}
+          onClick={() => dispatch(clearAll())}
+        >
           clear all
         </div>
-        <div onClick={closeCart} className="cart-exit">
+        <div
+          onClick={closeCart}
+          className="cart-exit"
+          data-testid={TEST_ID.CART_BUTTON_EXIT}
+        >
           <GrFormClose />
         </div>
       </div>
-      <div className="cart-items-wrapper">
+      <div
+        className="cart-items-wrapper"
+        data-testid={TEST_ID.CART_ITEMS_WRAPPER}
+      >
         {cartItems.map((item) => (
           <CartItem key={item._id} {...item} />
         ))}
       </div>
-      <div className="cart-total">Total: {cartTotalCost}</div>
+      <div className="cart-total" data-testid={TEST_ID.CART_TOTAL}>Total: {cartTotalCost}</div>
     </div>
   );
 }

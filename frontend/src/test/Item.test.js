@@ -6,10 +6,6 @@ import { store } from "../store/store";
 import Item from "../components/item/Item";
 import { TEST_ID } from "./consts";
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 const firstItem = {
   _id: "62fc0a8f794a6a5993c0e2af",
   type: "t-shirt",

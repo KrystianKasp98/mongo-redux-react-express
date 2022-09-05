@@ -1,5 +1,14 @@
 export const TEST_ID = {
   CART: "cart",
+  CART_BUTTON_CLEAR: "cart-button-clear",
+  CART_BUTTON_EXIT: "cart-button-exit",
+  CART_TOTAL: "cart-total",
+  CART_ITEMS_WRAPPER: "cart-items-wrapper",
+
+  CART_ITEM: "cart-item-",
+  CART_ITEM_TOTAL_COST: "cart-item-total-cost-",
+  CART_ITEM_MODEL: "cart-item-model-",
+
   BTN_CART_ON: "btn-cart-on",
   HEADER: "header",
   

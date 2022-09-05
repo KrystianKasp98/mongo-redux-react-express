@@ -31,7 +31,7 @@ describe("APP test components", () => {
     expect(screen.getByTestId(TEST_ID.HEADER)).toBeInTheDocument();
     expect(screen.getByTestId(TEST_ID.ITEMS_WRAPPER)).toBeInTheDocument();
     expect(screen.getByTestId(TEST_ID.BTN_CART_ON)).toBeInTheDocument();
-    fireEvent.click(screen.getByText(/open/i));
+    fireEvent.click(screen.getByTestId(TEST_ID.BTN_CART_ON));
     await waitFor(() => screen.findByTestId(TEST_ID.CART));
     expect(screen.getByTestId(TEST_ID.CART)).toBeInTheDocument();
   });
