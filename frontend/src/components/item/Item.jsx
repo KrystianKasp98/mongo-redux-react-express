@@ -22,13 +22,13 @@ function Item({ type, model, color, price, count, _id, testId, index }) {
       case "add":
         if (cartItem?.value + 1 <= count || !cartItem) {
           playClickAdd();
-          dispatch(add({ type, model, color, price, _id }));
+          dispatch(add({ type, model, color, price, _id, count }));
         }
         break;
       case "sub":
         if (cartItem?.value - 1 >= 0) {
           playClickSub();
-          dispatch(sub({ type, model, color, price, _id }));
+          dispatch(sub({ type, model, color, price, _id, count }));
         }
         break;
       default:

@@ -10,10 +10,10 @@ const client = new MongoClient(uri, {
 });
 
 const collection = client.db("redux-test").collection("items");
+// insert items
 // client.connect((err) => {
 //   const collection = client.db("redux-test").collection("items");
 //   // perform actions on the collection object
-//   // console.log(items);
 //   // collection.insertMany(items);
 
 //   // client.close();
@@ -34,7 +34,6 @@ const updateCountItem = async (options, count) => {
     const result = await collection.updateOne(options, {
       $set: { count: count },
     });
-    console.log(result);
     return !!result.modifiedCount;
   } catch (err) {
     return false;

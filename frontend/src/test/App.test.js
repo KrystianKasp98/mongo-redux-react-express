@@ -32,13 +32,18 @@ describe("APP test components", () => {
     expect(screen.getByTestId(TEST_ID.ITEMS_WRAPPER)).toBeInTheDocument();
     expect(screen.getByTestId(TEST_ID.BTN_CART_ON)).toBeInTheDocument();
     fireEvent.click(screen.getByTestId(TEST_ID.BTN_CART_ON));
+
+    // cart
     await waitFor(() => screen.findByTestId(TEST_ID.CART));
     expect(screen.getByTestId(TEST_ID.CART)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_ID.CART_BUTTON_CLEAR)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_ID.CART_BUTTON_EXIT)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_ID.CART_BUY_ITEMS)).toBeInTheDocument();
   });
 });
 
 describe("redux", () => {
-  test("loading items from db", async () => {
+  test("items", async () => {
     renderDefaultComponents();
     const emptyStore = store.getState();
     expect(emptyStore.items.status).toBe("loading");
@@ -49,7 +54,7 @@ describe("redux", () => {
     expect(fetchedStore.items.items.length).toBe(howMuchItems);
   });
 
-  test("cart items", async () => {
+  test("cart", async () => {
     renderDefaultComponents();
     await sleep(1000);
     const firstItemReduxBtnAdd = await screen.findByTestId(

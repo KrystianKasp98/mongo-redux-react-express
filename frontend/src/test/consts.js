@@ -3,6 +3,7 @@ export const TEST_ID = {
   CART_BUTTON_CLEAR: "cart-button-clear",
   CART_BUTTON_EXIT: "cart-button-exit",
   CART_TOTAL: "cart-total",
+  CART_BUY_ITEMS: "cart-buy-items",
   CART_ITEMS_WRAPPER: "cart-items-wrapper",
 
   CART_ITEM: "cart-item-",

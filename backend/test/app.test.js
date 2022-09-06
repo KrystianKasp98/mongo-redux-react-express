@@ -39,7 +39,6 @@ describe("test /items path", () => {
     
     const resDELETE = await request(app).delete(itemsPath).send(testItem);
     expect(resDELETE._body).toEqual({ result: true });
-    console.log(resPOST._body);
   });
 
   test("PUT METHOD", async () => {

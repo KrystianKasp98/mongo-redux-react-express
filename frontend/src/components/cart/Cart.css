@@ -17,9 +17,17 @@
 .cart-total {
   text-align: center;
   width: 384px;
-  padding: 5px 0;
+  padding: 4px 0;
   position: fixed;
   background-color: gray;
+}
+.cart-total{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.buy-items{
+  cursor: pointer;
 }
 .cart-title {
   top: 0;
